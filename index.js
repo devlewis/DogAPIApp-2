@@ -10,7 +10,7 @@ function getDogImage() {
     return response.json()})
   .then(responseJson => 
       displayResults(responseJson))
-  .catch(error => alert(response.responseText));
+  .catch(error => alert(response.statusText));
 }
 
 function displayResults(responseJson) {
