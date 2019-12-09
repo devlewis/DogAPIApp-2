@@ -4,17 +4,19 @@ function getDogImage() {
   const rslt = $('#input').val()
   $('#input').val('')
   fetch('https://dog.ceo/api/breed/'.concat(rslt,'/images/random'))
-    .then(response => response.json())
-    .then(responseJson => 
+  .then(response => {
+    if(!response.ok){
+    throw Error(alert("we couldn't find that breed!"))}
+    return response.json()})
+  .then(responseJson => 
       displayResults(responseJson))
-    .catch(error => alert('Something went wrong. Try again later.'));
+  .catch(error => alert("We couldn't find that breed!"));
 }
 
 function displayResults(responseJson) {
   console.log(responseJson);
   $('.results-img').replaceWith(
     `<img src="${responseJson.message}" class="results-img">`);
-  //display the results section
   $('.results').removeClass('hidden');
 }
 
