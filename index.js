@@ -10,7 +10,7 @@ function getDogImage() {
     return response.json()})
   .then(responseJson => 
       displayResults(responseJson))
-  .catch(error => alert("We couldn't find that breed!"));
+  .catch(error => alert(response.responseText));
 }
 
 function displayResults(responseJson) {
